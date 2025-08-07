@@ -1,3 +1,5 @@
+
+
 "use client"; // クライアントコンポーネント宣言、このコードはクライアント（ブラウザ）側で動く。  Next.js では何も書かなければサーバーコンポーネントになります。
 
 import { useState, useEffect } from "react";
@@ -44,18 +46,12 @@ export default function MenuPage() {
       // })
       // res.json();の戻り値が res に入ります。
       .then((res) => res.json()) // 文字列からオブジェクトへ変換
-      .then((data) => {
-        if (Array.isArray(data.contents)) {
-          setMenu(data.contents);
-        } else {
-          setMenu([]); // fallback to empty array
-          console.error("API response is not as expected:", data);
-        }
-      })
-      .catch((err) => {
-        setMenu([]); // fallback to empty array on error
-        console.error("Fetch error:", err);
-      });
+      .then((data) => setMenu(data.contents)); // res オブジェクト が data に入る return が呼ばれる
+      // 下記のように書き換えるとdataの中をブラウザ console で確認できます。
+      // .then((data) => {
+      //   setMenu(data.contents);
+      //   console.table(data.contents); // contents 配列をテーブル形式で表示
+      // });
 
     // localStorage からカートを復元
     const saved = localStorage.getItem("cart");
@@ -74,7 +70,7 @@ export default function MenuPage() {
 
   return (
     <div className={styles.container}>
-    
+      {/* メニュー一覧 */}<ul className={styles.list}></ul>
       <main className={styles.menuList}>
         <h1 className={styles.title}>メニュー一覧</h1>
         <ul className={styles.list}>

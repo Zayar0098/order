@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import styles from './page.module.css';
 
-const MENU_API_URL = 'https://de9ysow3dp.microcms.io/api/v1/menu';
+const MENU_API_URL = "https://jxi38tehw1.microcms.io/api/v1/order";
 
 type MenuItem = {
   id: string;

@@ -17,6 +17,8 @@
 .image {
   border-radius: 0.5rem;
   object-fit: cover;
+  width: 400px;
+  height: 400px;
 }
 .name {
   font-weight: bold;

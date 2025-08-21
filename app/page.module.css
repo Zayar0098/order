@@ -120,8 +120,8 @@
   }
 }
 .ImageContainer{
-  width: 250px;
-  height: 200px;
+  width: 200px;
+  height: 250px;
   display: block;
   border-radius: 4px;
   object-fit: cover;
@@ -136,6 +136,29 @@
   display: block;
   margin-bottom: 8px;
 }
+
+.body {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+
+.dark body {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+
+.button {
+  background-color: #f0f0f0;
+  color: #000000;
+}
+
+.dark button {
+  background-color: #333333;
+  color: #ffffff;
+}
+
 
 
 @media (prefers-reduced-motion) {
@@ -305,6 +328,7 @@
 }
 .name {
   margin-top: 0.5rem;
+  color: #dc2626;
 }
 .addButton {
   margin-top: 0.5rem;

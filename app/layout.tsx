@@ -1,11 +1,19 @@
+"use client";
 
+import { ThemeProvider } from "next-themes";
 
-import "./globals.css";
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="ja">
-      <body>{children}</body>
+    <html lang="en">
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

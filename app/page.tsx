@@ -1,11 +1,11 @@
-"use client"; 
+"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
-import ThemeToggle from "@/app/component/ThemeToggle"; 
+import ThemeToggle from "@/app/component/ThemeToggle";
 
 const MENU_API_URL = "https://jxi38tehw1.microcms.io/api/v1/order";
 
@@ -48,6 +48,12 @@ export default function MenuPage() {
     localStorage.setItem("cart", JSON.stringify(updated));
   };
 
+  const removeFromCart = (index: number) => {
+    const updated = cart.filter((_, i) => i !== index);
+    setCart(updated);
+    localStorage.setItem("cart", JSON.stringify(updated));
+  };
+
   return (
     <div className={styles.container}>
       {/* Header with dark/light toggle */}
@@ -81,14 +87,11 @@ export default function MenuPage() {
               >
                 追加
               </button>
-              {item.comment && (
-                <p className={styles.comment}>{item.comment}</p>
-              )}
+              {item.comment && <p className={styles.comment}>{item.comment}</p>}
               <hr className={styles.separator} />
             </li>
           ))}
         </ul>
-       
       </main>
 
       {/* Cart */}
@@ -111,6 +114,13 @@ export default function MenuPage() {
               <p className={styles.cartName}>
                 {item.name} — {item.price}円
               </p>
+              <button
+                className={styles.removeButton}
+                onClick={() => removeFromCart(i)}
+                aria-label={`${item.name}を削除`}
+              >
+                削除
+              </button>
             </div>
           ))
         )}
